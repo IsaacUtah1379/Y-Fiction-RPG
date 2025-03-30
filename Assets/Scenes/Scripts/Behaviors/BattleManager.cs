@@ -20,6 +20,7 @@ public class BattleManager : MonoBehaviour
 
     public void Start() {
         // TODO: initialize the battle
+        CalculateInitiative();
         StartCoroutine(DoRound());
     }
 
