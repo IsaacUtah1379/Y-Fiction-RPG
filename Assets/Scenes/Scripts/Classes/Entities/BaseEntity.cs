@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class BaseEntity : IEntity
     private List<IStatusEffect> phaseTwoStatusEffects;
 
     public bool AddStatusEffect(IStatusEffect effect) {
+        // FIXME: I'm not complicated enough yet!
+
         if (effect.Phase == StatusEffectPhase.PhaseOne) {
             phaseOneStatusEffects.Add(effect);
             return true;
@@ -19,6 +22,8 @@ public class BaseEntity : IEntity
     }
 
     public bool RemoveStatusEffect(IStatusEffect effect) {
+        // FIXME: I'm not complicated enough yet!
+
         if (effect.Phase == StatusEffectPhase.PhaseOne) {
             return phaseOneStatusEffects.Remove(effect);
         } else if (effect.Phase == StatusEffectPhase.PhaseTwo) {
@@ -29,7 +34,19 @@ public class BaseEntity : IEntity
     }
 
     public void ResolveStatusEffects(StatusEffectPhase phase) {
-        
+        List<IStatusEffect> effects;
+        if (phase == StatusEffectPhase.PhaseOne) {
+            effects = phaseOneStatusEffects;
+        } else if (phase == StatusEffectPhase.PhaseTwo) {
+            effects = phaseTwoStatusEffects;
+        } else {
+            throw new InvalidOperationException("Status effects must be either phase one or phase two.");
+        }
+
+        if (effects.Count > 0) {
+            SortStatusEffects(effects);
+            // TODO: actually resolve the effects
+        }
     }
 
     public void SortStatusEffects(List<IStatusEffect> effects) {
