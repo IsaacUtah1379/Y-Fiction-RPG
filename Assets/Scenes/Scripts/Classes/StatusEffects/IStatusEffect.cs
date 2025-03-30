@@ -1,3 +1,4 @@
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public enum StatusEffectPhase
@@ -9,5 +10,6 @@ public enum StatusEffectPhase
 public interface IStatusEffect
 {
     StatusEffectPhase Phase { get; }
+    int Priority { get; }
     bool update(IEntity entity);
 }

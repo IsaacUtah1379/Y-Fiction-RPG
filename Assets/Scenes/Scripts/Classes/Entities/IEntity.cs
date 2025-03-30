@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IEntity
 {
-    bool addStatusEffect(IStatusEffect statusEffect);
-    bool removeStatusEffect(IStatusEffect statusEffect);
-    void resolveStatusEffects(StatusEffectPhase phase);
+    bool AddStatusEffect(IStatusEffect statusEffect);
+    bool RemoveStatusEffect(IStatusEffect statusEffect);
+    void ResolveStatusEffects(StatusEffectPhase phase);
 }
