@@ -61,4 +61,13 @@ public class BattleManager : MonoBehaviour
             return BattleState.Ongoing;
         }
     }
+
+    public void Death(IEntity entity) {
+        if (entity is Enemy enemy) {
+            enemies.Remove(enemy);
+        } else if (entity is MainCharacter character) {
+            unconsicousCharacters.Add(character);
+            activeCharacters.Remove(character);
+        }
+    }
 }
