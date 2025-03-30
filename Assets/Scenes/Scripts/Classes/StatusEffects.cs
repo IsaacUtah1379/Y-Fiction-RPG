@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class StatusEffects
+public static class StatusEffects
 {
-    
+    private interface IStatusEffect
+    {
+        
+    }
 }
