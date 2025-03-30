@@ -21,9 +21,12 @@ public class BaseEntity : IEntity
         return false;
     }
 
-    public bool RemoveStatusEffect(IStatusEffect effect) {
-        // FIXME: I'm not complicated enough yet!
+    public bool RemoveStatusEffect(string name, StatusEffectPhase phase) {
+        // FIXME
+        return false;
+    }
 
+    private bool RemoveStatusEffect(IStatusEffect effect) {
         if (effect.Phase == StatusEffectPhase.PhaseOne) {
             return phaseOneStatusEffects.Remove(effect);
         } else if (effect.Phase == StatusEffectPhase.PhaseTwo) {
@@ -45,7 +48,12 @@ public class BaseEntity : IEntity
 
         if (effects.Count > 0) {
             SortStatusEffects(effects);
-            // TODO: actually resolve the effects
+            for (int i = 0; i < effects.Count; i++) {
+                bool keep = effects[i].update(this);
+                if (!keep) {
+                    RemoveStatusEffect(effects[i]);
+                }
+            }
         }
     }
 
