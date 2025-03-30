@@ -20,13 +20,14 @@ public class BattleManager : MonoBehaviour
 
     public void Start() {
         // TODO: initialize the battle
+        futureInitiative.AddRange(activeCharacters);
+        futureInitiative.AddRange(enemies);
         CalculateInitiative();
         StartCoroutine(DoRound());
     }
 
     private void CalculateInitiative() {
         initiativeChanged = true;
-        futureInitiative = new List<IEntity>();
         // TODO: actually calculate futureInitiative
     }
 
