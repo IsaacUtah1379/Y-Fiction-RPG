@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 
 public enum BattleState
 {
@@ -12,11 +11,11 @@ public enum BattleState
 
 public class BattleManager : MonoBehaviour
 {
-    private MainCharacter[] activeCharacters;
-    private MainCharacter[] unconsicousCharacters;
-    private Enemy[] enemies;
-    private IEntity[] initiative;
-    private IEntity[] futureInitiative;
+    private List<MainCharacter> activeCharacters;
+    private List<MainCharacter> unconsicousCharacters;
+    private List<Enemy> enemies;
+    private List<IEntity> initiative;
+    private List<IEntity> futureInitiative;
     private bool initiativeChanged = false;
 
     public void Start() {
@@ -26,7 +25,7 @@ public class BattleManager : MonoBehaviour
 
     private void CalculateInitiative() {
         initiativeChanged = true;
-        futureInitiative = new IEntity[activeCharacters.Length + enemies.Length];
+        futureInitiative = new List<IEntity>();
         // TODO: actually calculate futureInitiative
     }
 
@@ -37,7 +36,7 @@ public class BattleManager : MonoBehaviour
 
         BattleState state;
 
-        for (int i = 0; i < initiative.Length; i++) {
+        for (int i = 0; i < initiative.Count; i++) {
             yield return StartCoroutine(DoTurn(initiative[i]));
             state = GetBattleState();
 
@@ -54,9 +53,9 @@ public class BattleManager : MonoBehaviour
     }
 
     private BattleState GetBattleState() {
-        if (enemies.Length == 0) {
+        if (enemies.Count == 0) {
             return BattleState.Victory;
-        } else if (activeCharacters.Length == 0) {
+        } else if (activeCharacters.Count == 0) {
             return BattleState.Defeat;
         } else {
             return BattleState.Ongoing;
