@@ -22,7 +22,22 @@ public class BaseEntity : IEntity
     }
 
     public bool RemoveStatusEffect(string name, StatusEffectPhase phase) {
-        // FIXME
+        List<IStatusEffect> effects;
+        if (phase == StatusEffectPhase.PhaseOne) {
+            effects = phaseOneStatusEffects;
+        } else if (phase == StatusEffectPhase.PhaseTwo) {
+            effects = phaseTwoStatusEffects;
+        } else {
+            effects = new List<IStatusEffect>();
+        }
+
+        for (int i = 0; i < effects.Count; i++) {
+            if (effects[i].Name == name) {
+                effects.RemoveAt(i);
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -43,7 +58,7 @@ public class BaseEntity : IEntity
         } else if (phase == StatusEffectPhase.PhaseTwo) {
             effects = phaseTwoStatusEffects;
         } else {
-            throw new InvalidOperationException("Status effects must be either phase one or phase two.");
+            effects = new List<IStatusEffect>();
         }
 
         if (effects.Count > 0) {

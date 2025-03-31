@@ -10,6 +10,7 @@ public enum StatusEffectPhase
 public interface IStatusEffect
 {
     StatusEffectPhase Phase { get; }
+    string Name { get; }
     int Priority { get; }
     bool update(IEntity entity);
 }
