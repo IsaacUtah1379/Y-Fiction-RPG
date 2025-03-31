@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d2e0382602cc34db47653b4de4aec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveListLength: 30
+  moveListLength: 25
   velocity: 10
 --- !u!1 &1320484042
 GameObject:
