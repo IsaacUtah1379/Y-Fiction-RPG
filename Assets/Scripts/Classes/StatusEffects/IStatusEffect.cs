@@ -13,4 +13,5 @@ public interface IStatusEffect
     string Name { get; }
     int Priority { get; }
     bool update(IEntity entity);
+    // update will return true when it should be kept and false once it expires
 }

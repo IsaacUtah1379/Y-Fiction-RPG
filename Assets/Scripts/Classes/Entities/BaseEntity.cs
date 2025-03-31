@@ -9,6 +9,7 @@ public class BaseEntity : IEntity
 
     public bool AddStatusEffect(IStatusEffect effect) {
         // FIXME: I'm not complicated enough yet!
+        // (We still need to handle adding effects that already exist)
 
         if (effect.Phase == StatusEffectPhase.PhaseOne) {
             phaseOneStatusEffects.Add(effect);
