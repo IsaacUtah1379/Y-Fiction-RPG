@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 public class PartyMovement : MonoBehaviour
 {
     public int moveListLength;
-    private List<Vector2> movements;
+    public float velocity;
+    private List<Vector2> locations = new List<Vector2>();
     private InputAction moveAction;
     private GameObject first;
     private GameObject second;
@@ -16,10 +17,10 @@ public class PartyMovement : MonoBehaviour
     void Start()
     {
         for (int i = 0; i < moveListLength; i++) {
-            movements.Add(Vector2.zero);
+            locations.Add(Vector2.zero);
         }
 
-        moveAction = InputSystem.actions.FindAction("move");
+        moveAction = InputSystem.actions.FindAction("Move");
 
         first = transform.Find("First").gameObject;
         second = transform.Find("Second").gameObject;
@@ -32,10 +33,14 @@ public class PartyMovement : MonoBehaviour
     {
         Vector2 currentMove = moveAction.ReadValue<Vector2>();
         if (currentMove != Vector2.zero) {
-            movements.RemoveAt(0);
-            movements.Add(currentMove);
+            first.transform.Translate(Time.deltaTime * velocity * currentMove);
 
-            
+            locations.RemoveAt(0);
+            locations.Add(first.transform.position);
+
+            second.transform.position = locations[^((locations.Count / 3) + 1)];
+            third.transform.position = locations[locations.Count / 3];
+            fourth.transform.position = locations[0];
         }
     }
 }

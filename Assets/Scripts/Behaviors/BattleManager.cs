@@ -14,11 +14,11 @@ public class BattleManager : MonoBehaviour
     private List<MainCharacter> activeCharacters;
     private List<MainCharacter> unconsicousCharacters;
     private List<Enemy> enemies;
-    private List<IEntity> initiative;
-    private List<IEntity> futureInitiative;
+    private List<IEntity> initiative = new List<IEntity>();
+    private List<IEntity> futureInitiative = new List<IEntity>();
     private bool initiativeChanged = false;
 
-    public void Start() {
+    public void StartBattle() {
         // TODO: initialize the battle
         futureInitiative.AddRange(activeCharacters);
         futureInitiative.AddRange(enemies);
