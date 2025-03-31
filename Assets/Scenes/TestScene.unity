@@ -685,7 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveListLength: 30
-  velocity: 20
+  velocity: 10
 --- !u!1 &1320484042
 GameObject:
   m_ObjectHideFlags: 0

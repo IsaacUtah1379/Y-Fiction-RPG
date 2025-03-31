@@ -28,12 +28,11 @@ public class PartyMovement : MonoBehaviour
         fourth = transform.Find("Fourth").gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector2 currentMove = moveAction.ReadValue<Vector2>();
         if (currentMove != Vector2.zero) {
-            first.transform.Translate(Time.deltaTime * velocity * currentMove);
+            first.transform.Translate(Time.fixedDeltaTime * velocity * currentMove);
 
             locations.RemoveAt(0);
             locations.Add(first.transform.position);
