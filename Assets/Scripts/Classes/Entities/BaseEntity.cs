@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class BaseEntity : IEntity
 {
+    // Please note that frozen and paralyzed only track if the action should be skipped
+    // because of the relevant status effect, not whether the entity has that status effect.
+    public bool frozen = false;
+    public bool paralyzed = false;
     private List<IStatusEffect> phaseOneStatusEffects;
     private List<IStatusEffect> phaseTwoStatusEffects;
 

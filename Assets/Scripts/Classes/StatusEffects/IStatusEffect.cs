@@ -9,9 +9,9 @@ public enum StatusEffectPhase
 
 public interface IStatusEffect
 {
-    StatusEffectPhase Phase { get; }
     string Name { get; }
     int Priority { get; }
+    StatusEffectPhase Phase { get; }
     bool update(IEntity entity);
     // update will return true when it should be kept and false once it expires
 }
