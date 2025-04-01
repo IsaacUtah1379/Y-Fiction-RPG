@@ -60,7 +60,9 @@ public class BattleManager : MonoBehaviour
     }
 
     private IEnumerator DoTurn(IEntity entity) {
-        yield return null;
+        entity.ResolveStatusEffects(StatusEffectPhase.PhaseOne);
+        yield return StartCoroutine(entity.Act());
+        entity.ResolveStatusEffects(StatusEffectPhase.PhaseTwo);
     }
 
     private BattleState GetBattleState() {

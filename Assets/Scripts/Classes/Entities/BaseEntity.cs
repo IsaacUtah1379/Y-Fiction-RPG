@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -78,6 +78,10 @@ public class BaseEntity : IEntity
     }
 
     public void SortStatusEffects(List<IStatusEffect> effects) {
+        // TODO
+    }
 
+    public IEnumerator Act() {
+        yield return null;
     }
 }
