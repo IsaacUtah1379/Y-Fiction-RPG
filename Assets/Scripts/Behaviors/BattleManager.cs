@@ -13,6 +13,7 @@ public class BattleManager : MonoBehaviour
 {
     private List<MainCharacter> activeCharacters;
     private List<MainCharacter> unconsicousCharacters;
+    private List<Ally> allies;
     private List<Enemy> enemies;
     private List<IEntity> initiative = new List<IEntity>();
     private List<IEntity> futureInitiative = new List<IEntity>();
@@ -21,6 +22,7 @@ public class BattleManager : MonoBehaviour
     public void StartBattle() {
         // TODO: initialize the battle
         futureInitiative.AddRange(activeCharacters);
+        futureInitiative.AddRange(allies);
         futureInitiative.AddRange(enemies);
         CalculateInitiative();
         StartCoroutine(DoRound());
@@ -36,7 +38,7 @@ public class BattleManager : MonoBehaviour
             initiative = futureInitiative;
         }
 
-        BattleState state;
+        BattleState state = BattleState.Ongoing;
 
         for (int i = 0; i < initiative.Count; i++) {
             yield return StartCoroutine(DoTurn(initiative[i]));
@@ -47,7 +49,14 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        // TODO: Handle victory and loss
+        
+        if (state == BattleState.Victory) {
+            // TODO: handle victory
+        } else if (state == BattleState.Defeat) {
+            // TODO: handle defeat
+        } else {
+            StartCoroutine(DoRound());
+        }
     }
 
     private IEnumerator DoTurn(IEntity entity) {
