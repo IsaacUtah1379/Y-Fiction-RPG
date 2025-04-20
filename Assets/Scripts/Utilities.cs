@@ -1,3 +1,4 @@
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public enum AxisPair {
@@ -27,5 +28,25 @@ public static class Utilities
         } else {
             return Vector2.zero;
         }
+    }
+
+    public static Vector2 MapVector(Vector2 input, System.Func<float, float> func) {
+        Vector2 output = new Vector2(func(input.x), func(input.y));
+        return output;
+    }
+
+    public static Vector3 MapVector(Vector3 input, System.Func<float, float> func) {
+        Vector3 output = new Vector3(func(input.x), func(input.y), func(input.z));
+        return output;
+    }
+
+    public static Vector2Int MapVector(Vector2Int input, System.Func<int, int> func) {
+        Vector2Int output = new Vector2Int(func(input.x), func(input.y));
+        return output;
+    }
+
+    public static Vector3Int MapVector(Vector3Int input, System.Func<int, int> func) {
+        Vector3Int output = new Vector3Int(func(input.x), func(input.y), func(input.z));
+        return output;
     }
 }
