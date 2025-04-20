@@ -8,6 +8,7 @@ public class BaseEntity : IEntity
     // because of the relevant status effect, not whether the entity has that status effect.
     public bool frozen = false;
     public bool paralyzed = false;
+    public Sprite sprite;
     private List<IStatusEffect> phaseOneStatusEffects;
     private List<IStatusEffect> phaseTwoStatusEffects;
 
