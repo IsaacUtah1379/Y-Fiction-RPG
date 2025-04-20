@@ -19,8 +19,12 @@ public class BattleManager : MonoBehaviour
     private List<IEntity> futureInitiative = new List<IEntity>();
     private bool initiativeChanged = false;
 
-    public void StartBattle() {
-        // TODO: initialize the battle
+    public void StartBattle(List<MainCharacter> chars, List<Ally> alls, List<Enemy> ens) {
+        // TODO: initialize the battle screen
+        activeCharacters = chars;
+        allies = alls;
+        enemies = ens;
+
         futureInitiative.AddRange(activeCharacters);
         futureInitiative.AddRange(allies);
         futureInitiative.AddRange(enemies);
