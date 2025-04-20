@@ -28,7 +28,7 @@ public class BattleManager : MonoBehaviour
         StartCoroutine(DoRound());
     }
 
-    private void CalculateInitiative() {
+    public void CalculateInitiative() {
         initiativeChanged = true;
         // TODO: actually calculate futureInitiative
     }
