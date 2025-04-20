@@ -81,7 +81,7 @@ public class BaseEntity : IEntity
         // TODO
     }
 
-    public IEnumerator Act() {
+    public IEnumerator Act(BattleManager manager) {
         yield return null;
     }
 }
