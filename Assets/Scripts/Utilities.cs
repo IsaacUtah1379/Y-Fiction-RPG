@@ -3,8 +3,8 @@ using UnityEngine;
 public enum AxisPair {
     xy,
     xz,
-    yz,
     yx,
+    yz,
     zx,
     zy
 }
@@ -28,6 +28,7 @@ public static class Utilities
             return Vector2.zero;
         }
     }
+
 
     public static Vector2 MapVector(Vector2 input, System.Func<float, float> func) {
         Vector2 output = new Vector2(func(input.x), func(input.y));
