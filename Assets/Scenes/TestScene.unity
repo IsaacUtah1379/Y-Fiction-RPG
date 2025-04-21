@@ -393,9 +393,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0fd59402b999014e9849f1ca8af6f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xFollowDistance: 0
-  yFollowDistance: 0
-  party: {fileID: 1302641050}
+  xFollowDistance: 5
+  yFollowDistance: 2.5
+  firstActor: {fileID: 207976273}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
